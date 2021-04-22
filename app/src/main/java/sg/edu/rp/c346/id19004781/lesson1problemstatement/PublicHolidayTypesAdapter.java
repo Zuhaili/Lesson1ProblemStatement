@@ -30,10 +30,10 @@ public class PublicHolidayTypesAdapter  extends ArrayAdapter<PublicHolidayTypes>
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.publicholidays_row, parent, false);
 
-        PublicHolidayTypes currentYear = aa.get(position);
+        PublicHolidayTypes currentHolidayType = aa.get(position);
 
         textView = rowView.findViewById(R.id.tvHolidayTypes);
-        textView.setText(currentYear.getHolidaytypes());
+        textView.setText(currentHolidayType.getHolidaytypes());
 
         return rowView;
     }

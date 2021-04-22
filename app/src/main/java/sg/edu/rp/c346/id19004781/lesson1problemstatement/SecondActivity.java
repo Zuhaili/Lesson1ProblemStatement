@@ -1,7 +1,9 @@
 package sg.edu.rp.c346.id19004781.lesson1problemstatement;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,13 +14,19 @@ public class SecondActivity extends AppCompatActivity {
     ListView lv;
     HolidaysAdapter aa;
     ArrayList<Holidays> holidays;
+    TextView tvHoliday;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activitysecond);
 
-        lv = (ListView) this.findViewById(R.id.lvHolidays);
+        ListView lv = this.findViewById(R.id.lvsecond);
+        TextView tvHoliday = this.findViewById(R.id.tvHolidayTypes);
+
+        Intent intent = getIntent();
+        String message = intent.getStringExtra("holiday");
+        tvHoliday.setText(message);
 
         // Create a few food objects in Food array
         holidays = new ArrayList<Holidays>();
