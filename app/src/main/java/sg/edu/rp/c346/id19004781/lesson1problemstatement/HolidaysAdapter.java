@@ -4,12 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class HolidaysAdapter {
+public class HolidaysAdapter extends ArrayAdapter<Holidays> {
     private ArrayList<Holidays> holidays;
     private Context context;
     private TextView tvnewyear, tvlabourday;
@@ -45,16 +46,16 @@ public class HolidaysAdapter {
         // The parameter "position" is the index of the
         //  row ListView is requesting.
         //  We get back the food at the same index.
-        Holidays currentFood = holidays.get(position);
+        Holidays currentHoliday = holidays.get(position);
         // Set the TextView to show the food
 
-        tvnewyear.setText(currentFood.getTitle());
+        tvnewyear.setText(currentHoliday.getTitle());
         // Set the image to star or nostar accordingly
-        if(currentFood.isStar()) {
+        if(currentHoliday.isImage()) {
             ivnewyear.setImageResource(R.drawable.newyear);
         }
         else {
-            ivlabourday.setImageResource(R.drawable.labourDay);
+            ivlabourday.setImageResource(R.drawable.labourday);
         }
         // Return the nicely done up View to the ListView
         return rowView;

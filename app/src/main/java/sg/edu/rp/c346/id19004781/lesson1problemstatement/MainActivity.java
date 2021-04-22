@@ -2,7 +2,10 @@ package sg.edu.rp.c346.id19004781.lesson1problemstatement;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -12,24 +15,29 @@ public class MainActivity extends AppCompatActivity {
 
     ListView lv;
     ArrayAdapter aa;
-    ArrayList<Food> food;
+    ArrayList<PublicHolidayTypes> al;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        lv = (ListView) this.findViewById(R.id.lvHolidays);
-
-        // Create a few food objects in Food array
-        food = new ArrayList<Food>();
-        food.add(new Food("Ah Lat Coffee", false));
+        lv = findViewById(R.id.lvHolidays);
+        al = new ArrayList<>();
+        al.add(new PublicHolidayTypes("Secular"));
 
 
-        // Link this Activity object, the row.xml layout for
-        //  each row and the food String array together
-        aa = new FoodAdapter(this, R.layout.row, food);
+        aa = new PublicHolidayTypesAdapter(this, R.layout.publicholidays_row, al);
         lv.setAdapter(aa);
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent.putExtra("holiday", al.get(i).getHolidaytypes());
+                startActivity(intent);
+            }
+        });
 
     }
 }

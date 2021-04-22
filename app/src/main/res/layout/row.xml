@@ -33,7 +33,7 @@
             android:id="@+id/ivlabourday"
             android:layout_width="171dp"
             android:layout_height="128dp"
-            app:srcCompat="@drawable/labourDay" />
+            app:srcCompat="@drawable/labourday" />
 
         <TextView
             android:id="@+id/tvlabourday"
